@@ -16,12 +16,15 @@ namespace Golovanov_tomogram_visualizer
         private int frameCount;
         private DateTime nextFPSUpdate;
         private bool loaded = false;
+        private int mode = 0;
+        private bool needReload = false;
         private Bin binReader = new Bin();
         private View view = new View();
         private int currentLayer = 0;
         public Form1()
         {
             InitializeComponent();
+            comboBox1.SelectedIndex = 0;
         }
 
         private void toolStripLabel1_Click(object sender, EventArgs e)
@@ -59,20 +62,59 @@ namespace Golovanov_tomogram_visualizer
         {
             if (loaded)
             {
-                view.DrawQuads(currentLayer);
-                glControl1.SwapBuffers();
+                switch (mode)
+                {
+                    case 0:
+                        view.DrawQuads(currentLayer);
+                        glControl1.SwapBuffers();
+                        break;
+
+                    case 1:
+                        if (needReload)
+                        {
+                            view.GenerateTextureImage(currentLayer);
+                            view.Load2DTexture();
+                            needReload = false;
+                        }
+                        view.DrawTexture();
+                        glControl1.SwapBuffers();
+                        break;
+                }
+
             }
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
             currentLayer = trackBar1.Value;
+            needReload = true;
             label1.Text = currentLayer.ToString();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             Application.Idle += ApplicationIdle;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            mode = comboBox1.SelectedIndex;
+        }
+
+        private void minTF_Scroll(object sender, EventArgs e)
+        {
+            needReload = true;
+            view.Min = minTF.Value;
+            shirinaTF.Maximum = 255 - minTF.Value;
+            shirinaTFLabel.Text = shirinaTF.Value.ToString();
+            minTFLabel.Text = minTF.Value.ToString();
+        }
+
+        private void shirinaTF_Scroll(object sender, EventArgs e)
+        {
+            needReload = true;
+            view.Shirina = shirinaTF.Value;
+            shirinaTFLabel.Text = shirinaTF.Value.ToString();
         }
     }
 }

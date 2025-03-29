@@ -14,6 +14,8 @@ namespace Golovanov_tomogram_visualizer
     {
         private int VBOTexture;
         Bitmap textureImage;
+        public int Min { get; set; } = 0;
+        public int Shirina { get; set; } = 255;
         public void SetupView(int width, int height)
         {
             GL.ShadeModel(ShadingModel.Smooth);
@@ -24,8 +26,8 @@ namespace Golovanov_tomogram_visualizer
         }
         private Color TransferFunction(short value)
         {
-            int min = 0;
-            int max = 2000;
+            int min = Min;
+            int max = Min+Shirina;
             int newVal = Clamp((value - min) * 255 / (max - min));
             return Color.FromArgb(255, newVal, newVal, newVal);
         }
@@ -79,6 +81,7 @@ namespace Golovanov_tomogram_visualizer
             GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba,
                 data.Width, data.Height, 0, OpenTK.Graphics.OpenGL.PixelFormat.Bgra,
                 PixelType.UnsignedByte, data.Scan0);
+
             textureImage.UnlockBits(data);
 
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter,
@@ -116,6 +119,8 @@ namespace Golovanov_tomogram_visualizer
             GL.TexCoord2(1f, 0f);
             GL.Vertex2(Bin.X, 0);
             GL.End();
+
+            GL.Disable(EnableCap.Texture2D);
         }
     }
 }

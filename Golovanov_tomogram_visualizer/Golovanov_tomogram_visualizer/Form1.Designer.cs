@@ -33,8 +33,16 @@
             this.glControl1 = new OpenTK.GLControl();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.minTF = new System.Windows.Forms.TrackBar();
+            this.shirinaTF = new System.Windows.Forms.TrackBar();
+            this.minTFLabel = new System.Windows.Forms.Label();
+            this.shirinaTFLabel = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minTF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shirinaTF)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -83,11 +91,76 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "label1";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Четырёхугольники",
+            "Текстура"});
+            this.comboBox1.Location = new System.Drawing.Point(465, 55);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 5;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // minTF
+            // 
+            this.minTF.Location = new System.Drawing.Point(465, 123);
+            this.minTF.Maximum = 254;
+            this.minTF.Name = "minTF";
+            this.minTF.Size = new System.Drawing.Size(104, 45);
+            this.minTF.TabIndex = 6;
+            this.minTF.Scroll += new System.EventHandler(this.minTF_Scroll);
+            // 
+            // shirinaTF
+            // 
+            this.shirinaTF.Location = new System.Drawing.Point(465, 174);
+            this.shirinaTF.Maximum = 255;
+            this.shirinaTF.Minimum = 1;
+            this.shirinaTF.Name = "shirinaTF";
+            this.shirinaTF.Size = new System.Drawing.Size(104, 45);
+            this.shirinaTF.TabIndex = 7;
+            this.shirinaTF.Value = 255;
+            this.shirinaTF.Scroll += new System.EventHandler(this.shirinaTF_Scroll);
+            // 
+            // minTFLabel
+            // 
+            this.minTFLabel.AutoSize = true;
+            this.minTFLabel.Location = new System.Drawing.Point(591, 123);
+            this.minTFLabel.Name = "minTFLabel";
+            this.minTFLabel.Size = new System.Drawing.Size(13, 13);
+            this.minTFLabel.TabIndex = 3;
+            this.minTFLabel.Text = "0";
+            // 
+            // shirinaTFLabel
+            // 
+            this.shirinaTFLabel.AutoSize = true;
+            this.shirinaTFLabel.Location = new System.Drawing.Point(590, 179);
+            this.shirinaTFLabel.Name = "shirinaTFLabel";
+            this.shirinaTFLabel.Size = new System.Drawing.Size(25, 13);
+            this.shirinaTFLabel.TabIndex = 3;
+            this.shirinaTFLabel.Text = "255";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(752, -101);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "label1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.shirinaTF);
+            this.Controls.Add(this.minTF);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.shirinaTFLabel);
+            this.Controls.Add(this.minTFLabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.glControl1);
@@ -98,6 +171,8 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minTF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shirinaTF)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -110,6 +185,12 @@
         private OpenTK.GLControl glControl1;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TrackBar minTF;
+        private System.Windows.Forms.TrackBar shirinaTF;
+        private System.Windows.Forms.Label minTFLabel;
+        private System.Windows.Forms.Label shirinaTFLabel;
+        private System.Windows.Forms.Label label4;
     }
 }
 
