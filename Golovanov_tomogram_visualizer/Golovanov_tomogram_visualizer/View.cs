@@ -21,7 +21,7 @@ namespace Golovanov_tomogram_visualizer
             GL.ShadeModel(ShadingModel.Smooth);
             GL.MatrixMode(MatrixMode.Projection);
             GL.LoadIdentity();
-            GL.Ortho(0, Bin.X, 0, Bin.Y, -1, 1);
+            GL.Ortho(0, Bin.X, 0, Bin.Z, -1, 1);
             GL.Viewport(0, 0, width, height);
         }
         private Color TransferFunction(short value)
@@ -42,32 +42,32 @@ namespace Golovanov_tomogram_visualizer
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             GL.Begin(BeginMode.Quads);
             for (int x_coord = 0; x_coord < Bin.X-1; x_coord++)
-                for (int y_coord = 0; y_coord < Bin.Y-1; y_coord++)
+                for (int z_coord = 0; z_coord < Bin.Z-1; z_coord++)
                 {
                     short value;
                     //1 вершина
-                    value = Bin.array[x_coord + y_coord * Bin.X
-                                                    + layerNumber * Bin.X * Bin.Y];
+                    value = Bin.array[x_coord + layerNumber * Bin.X
+                                                    + Bin.Y * Bin.X * z_coord];
                     GL.Color3(TransferFunction(value));
-                    GL.Vertex2(x_coord, y_coord);
+                    GL.Vertex2(x_coord, z_coord);
 
                     //2 вершина
-                    value = Bin.array[x_coord + (y_coord+1) * Bin.X
-                                                    + layerNumber * Bin.X * Bin.Y];
+                    value = Bin.array[x_coord + (layerNumber+1) * Bin.X
+                                                    + z_coord * Bin.X * Bin.Y];
                     GL.Color3(TransferFunction(value));
-                    GL.Vertex2(x_coord, y_coord+1);
+                    GL.Vertex2(x_coord, z_coord + 1);
 
                     //3 вершина
-                    value = Bin.array[x_coord+1 + (y_coord + 1) * Bin.X
-                                                    + layerNumber * Bin.X * Bin.Y];
+                    value = Bin.array[x_coord+1 + (layerNumber + 1) * Bin.X
+                                                    + z_coord * Bin.X * Bin.Y];
                     GL.Color3(TransferFunction(value));
-                    GL.Vertex2(x_coord+1, y_coord+1);
+                    GL.Vertex2(x_coord+1, z_coord + 1);
 
                     //4 вершина
-                    value = Bin.array[x_coord+1 + y_coord * Bin.X
-                                                    + layerNumber * Bin.X * Bin.Y];
+                    value = Bin.array[x_coord+1 + layerNumber * Bin.X
+                                                    + z_coord * Bin.X * Bin.Y];
                     GL.Color3(TransferFunction(value));
-                    GL.Vertex2(x_coord+1, y_coord);
+                    GL.Vertex2(x_coord+1, z_coord);
                 }
             GL.End();
         }
@@ -94,11 +94,11 @@ namespace Golovanov_tomogram_visualizer
         }
         public void GenerateTextureImage(int layerNumber)
         {
-            textureImage = new Bitmap(Bin.X, Bin.Y);
+            textureImage = new Bitmap(Bin.X, Bin.Z);
             for (int i = 0; i < Bin.X; ++i)
-                for(int j = 0; j < Bin.Y; ++j)
+                for(int j = 0; j < Bin.Z; ++j)
                 {
-                    int pixelNumber = i + j * Bin.X + layerNumber * Bin.X * Bin.Y;
+                    int pixelNumber = i + layerNumber * Bin.X + j * Bin.X * Bin.Y;
                     textureImage.SetPixel(i, j, TransferFunction(Bin.array[pixelNumber]));  
                 }
         }

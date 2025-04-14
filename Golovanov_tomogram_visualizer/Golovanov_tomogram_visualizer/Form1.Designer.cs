@@ -30,7 +30,6 @@
         {
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.glControl1 = new OpenTK.GLControl();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -39,6 +38,7 @@
             this.minTFLabel = new System.Windows.Forms.Label();
             this.shirinaTFLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.glControl1 = new OpenTK.GLControl();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minTF)).BeginInit();
@@ -47,47 +47,40 @@
             // 
             // toolStrip1
             // 
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1067, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(61, 22);
+            this.toolStripLabel1.Size = new System.Drawing.Size(77, 22);
             this.toolStripLabel1.Text = "Загрузить";
             this.toolStripLabel1.Click += new System.EventHandler(this.toolStripLabel1_Click);
-            // 
-            // glControl1
-            // 
-            this.glControl1.BackColor = System.Drawing.Color.Black;
-            this.glControl1.Location = new System.Drawing.Point(0, 28);
-            this.glControl1.Name = "glControl1";
-            this.glControl1.Size = new System.Drawing.Size(409, 359);
-            this.glControl1.TabIndex = 1;
-            this.glControl1.VSync = false;
-            this.glControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.glControl1_Paint);
             // 
             // trackBar1
             // 
             this.trackBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.trackBar1.Location = new System.Drawing.Point(13, 403);
+            this.trackBar1.Location = new System.Drawing.Point(17, 496);
+            this.trackBar1.Margin = new System.Windows.Forms.Padding(4);
             this.trackBar1.Maximum = 0;
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(396, 45);
+            this.trackBar1.Size = new System.Drawing.Size(528, 56);
             this.trackBar1.TabIndex = 2;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(429, 403);
+            this.label1.Location = new System.Drawing.Point(572, 496);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(44, 16);
             this.label1.TabIndex = 3;
             this.label1.Text = "label1";
             // 
@@ -97,28 +90,31 @@
             this.comboBox1.Items.AddRange(new object[] {
             "Четырёхугольники",
             "Текстура"});
-            this.comboBox1.Location = new System.Drawing.Point(465, 55);
+            this.comboBox1.Location = new System.Drawing.Point(620, 68);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.Size = new System.Drawing.Size(160, 24);
             this.comboBox1.TabIndex = 5;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // minTF
             // 
-            this.minTF.Location = new System.Drawing.Point(465, 123);
+            this.minTF.Location = new System.Drawing.Point(620, 151);
+            this.minTF.Margin = new System.Windows.Forms.Padding(4);
             this.minTF.Maximum = 254;
             this.minTF.Name = "minTF";
-            this.minTF.Size = new System.Drawing.Size(104, 45);
+            this.minTF.Size = new System.Drawing.Size(139, 56);
             this.minTF.TabIndex = 6;
             this.minTF.Scroll += new System.EventHandler(this.minTF_Scroll);
             // 
             // shirinaTF
             // 
-            this.shirinaTF.Location = new System.Drawing.Point(465, 174);
+            this.shirinaTF.Location = new System.Drawing.Point(620, 214);
+            this.shirinaTF.Margin = new System.Windows.Forms.Padding(4);
             this.shirinaTF.Maximum = 255;
             this.shirinaTF.Minimum = 1;
             this.shirinaTF.Name = "shirinaTF";
-            this.shirinaTF.Size = new System.Drawing.Size(104, 45);
+            this.shirinaTF.Size = new System.Drawing.Size(139, 56);
             this.shirinaTF.TabIndex = 7;
             this.shirinaTF.Value = 255;
             this.shirinaTF.Scroll += new System.EventHandler(this.shirinaTF_Scroll);
@@ -126,35 +122,49 @@
             // minTFLabel
             // 
             this.minTFLabel.AutoSize = true;
-            this.minTFLabel.Location = new System.Drawing.Point(591, 123);
+            this.minTFLabel.Location = new System.Drawing.Point(788, 151);
+            this.minTFLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.minTFLabel.Name = "minTFLabel";
-            this.minTFLabel.Size = new System.Drawing.Size(13, 13);
+            this.minTFLabel.Size = new System.Drawing.Size(14, 16);
             this.minTFLabel.TabIndex = 3;
             this.minTFLabel.Text = "0";
             // 
             // shirinaTFLabel
             // 
             this.shirinaTFLabel.AutoSize = true;
-            this.shirinaTFLabel.Location = new System.Drawing.Point(590, 179);
+            this.shirinaTFLabel.Location = new System.Drawing.Point(787, 220);
+            this.shirinaTFLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.shirinaTFLabel.Name = "shirinaTFLabel";
-            this.shirinaTFLabel.Size = new System.Drawing.Size(25, 13);
+            this.shirinaTFLabel.Size = new System.Drawing.Size(28, 16);
             this.shirinaTFLabel.TabIndex = 3;
             this.shirinaTFLabel.Text = "255";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(752, -101);
+            this.label4.Location = new System.Drawing.Point(1003, -124);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.Size = new System.Drawing.Size(44, 16);
             this.label4.TabIndex = 3;
             this.label4.Text = "label1";
             // 
+            // glControl1
+            // 
+            this.glControl1.BackColor = System.Drawing.Color.Black;
+            this.glControl1.Location = new System.Drawing.Point(0, 34);
+            this.glControl1.Margin = new System.Windows.Forms.Padding(5);
+            this.glControl1.Name = "glControl1";
+            this.glControl1.Size = new System.Drawing.Size(586, 442);
+            this.glControl1.TabIndex = 1;
+            this.glControl1.VSync = false;
+            this.glControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.glControl1_Paint);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.shirinaTF);
             this.Controls.Add(this.minTF);
             this.Controls.Add(this.comboBox1);
@@ -165,6 +175,7 @@
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.glControl1);
             this.Controls.Add(this.toolStrip1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -182,7 +193,6 @@
 
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        private OpenTK.GLControl glControl1;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox1;
@@ -191,6 +201,7 @@
         private System.Windows.Forms.Label minTFLabel;
         private System.Windows.Forms.Label shirinaTFLabel;
         private System.Windows.Forms.Label label4;
+        private OpenTK.GLControl glControl1;
     }
 }
 
